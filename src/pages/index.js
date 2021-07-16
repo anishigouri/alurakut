@@ -50,8 +50,8 @@ export default function Home() {
   }, []);
 
   async function getCommunities() {
-    const communities = await axios.post(
-      "https://graphql.datocms.com/",
+    const response = await axios.post(
+      "/api/comunidades",
       JSON.stringify({
         query: `query {
             allCommunities {
@@ -70,7 +70,8 @@ export default function Home() {
         },
       }
     );
-    setComunidades(communities.data.data.allCommunities);
+
+    setComunidades(response);
   }
 
   async function getSeguidores() {
